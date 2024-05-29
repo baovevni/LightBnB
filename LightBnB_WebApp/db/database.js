@@ -25,7 +25,6 @@ const getUserWithEmail = function(email) {
         WHERE email = $1
         `, [email])
     .then((result) => {
-      console.log(result.rows);
       return result.rows[0];
     })
     .catch((err) => {
@@ -46,7 +45,6 @@ const getUserWithId = function(id) {
         WHERE id = $1
         `, [id])
     .then((result) => {
-      console.log(result.rows);
       return result.rows[0];
     })
     .catch((err) => {
@@ -69,7 +67,6 @@ const addUser = function({name, email, password}) {
       RETURNING *;
       `, [name, email, password])
   .then((result) => {
-    console.log(result.rows);
     return result.rows[0];
   })
   .catch((err) => {
@@ -96,7 +93,6 @@ const getAllReservations = function(guest_id, limit = 10) {
       ORDER BY start_date
       LIMIT $2;`, [guest_id, limit])
     .then((result) => {
-      console.log(result.rows);
       return result.rows;
     })
     .catch((err) => {
@@ -119,7 +115,6 @@ const getAllProperties = function(options, limit = 10) {
       FROM properties
       LIMIT $1`, [limit])
     .then((result) => {
-      console.log(result.rows);
       return result.rows;
     })
     .catch((err) => {
